@@ -1,0 +1,9 @@
+<ul>
+  <% for (var i = 0; i < movies.length; i++) { %>
+    <% var movie = movies[i]; %>
+    <li class="movie">
+      <%= movie.title %>
+      <%= movie.rating %>
+    </li>
+  <% } %>
+</ul>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div id="movies"></div>
+  </body>
+  <script type="text/javascript" src="{{ url_for("static", filename="ejs.js") }}"></script>
+  <script type="text/javascript" src="{{ url_for("static", filename="jquery-3.2.1.min.js") }}"></script>
+
+  <script type="text/javascript">
+    //var movies = [];
+    //movies.push({id: 100, link: "https://movie.douban.com/", title: "Movie"});
+    //movies.push({id: 101, link: "https://music.douban.com/", title: "Music"});
+  $(document).ready(function(){
+
+   $.get("http://0.0.0.0:5000/api/movies", function(movies, status) {
+     //var movies = JSON.parse(data);
+     var template = '{{ url_for("static", filename="movies.ejs") }}';
+     var ejs = new EJS({url: template});
+     var html = ejs.render({movies: movies});
+
+     console.log(html);
+
+     document.getElementById("movies").innerHTML = html;
+   });
+ });
+  </script>
+</html>
